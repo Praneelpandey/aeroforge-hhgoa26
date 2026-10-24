@@ -1,0 +1,215 @@
+@import "tailwindcss";
+
+/* ============================================================================
+ * AEROFORGE — Apple Daylight Studio design system
+ * VisionOS Daylight UI · JPL white cleanroom · Teenage Engineering accents
+ * ==========================================================================*/
+
+:root {
+  color-scheme: light;
+  --ink: #0f172a;
+  --ink-2: #475569;
+  --ink-3: #64748b;
+  --blue: #0071e3;
+  --orange: #ff5500;
+  --emerald: #10b981;
+  --crimson: #ef4444;
+  --studio-1: #f5f5f7;
+  --studio-2: #e8ecf2;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  background: #f5f5f7;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter",
+    "Segoe UI Variable", "Segoe UI", system-ui, Roboto, "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  user-select: none;
+  color: #0f172a;
+}
+
+::selection {
+  background: rgba(0, 113, 227, 0.22);
+}
+
+/* ── Page canvas: warm alabaster → daylight grey ─────────────────────────── */
+
+.studio-page {
+  background: radial-gradient(120% 90% at 50% 0%, #f8f9fb 0%, #f5f5f7 42%, #e8ecf2 100%);
+}
+
+/* ── Apple frosted white glass panels ───────────────────────────────────── */
+
+.glass {
+  background: rgba(255, 255, 255, 0.84);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow:
+    0 12px 32px -4px rgba(15, 23, 42, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.92);
+}
+
+/* crisp hairline highlight edge */
+.spec-border {
+  position: relative;
+}
+.spec-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.9),
+    rgba(15, 23, 42, 0.05) 40%,
+    rgba(15, 23, 42, 0.04) 65%,
+    rgba(15, 23, 42, 0.1)
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ── Monospaced telemetry numerals ───────────────────────────────────────── */
+
+.mono-num {
+  font-family: ui-monospace, "SF Mono", "JetBrains Mono", "Cascadia Mono", Consolas, monospace;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+/* ── 3D hover tooltip pill (shown only for the hovered part) ─────────────── */
+
+.hover-pill {
+  pointer-events: none;
+  white-space: nowrap;
+  border-radius: 9999px;
+  padding: 5px 12px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #0f172a;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  box-shadow: 0 8px 24px -6px rgba(15, 23, 42, 0.25);
+}
+
+.hover-pill .hp-accent {
+  color: #0071e3;
+}
+
+.hover-pill .hp-accent-orange {
+  color: #ff5500;
+}
+
+/* legacy chips kept for AR-mode floating labels (thin, quiet on light bg) */
+.holo-chip {
+  pointer-events: none;
+  white-space: nowrap;
+  border-radius: 9999px;
+  padding: 3px 10px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #0f172a;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  box-shadow: 0 6px 18px -6px rgba(15, 23, 42, 0.28);
+}
+
+.holo-chip-green,
+.holo-chip-amber,
+.holo-chip-cyan {
+  color: #0f172a;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  box-shadow: 0 6px 18px -6px rgba(15, 23, 42, 0.28);
+}
+
+/* ── Holo slider (Apple system blue thumb on light track) ────────────────── */
+
+.holo-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 5px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, rgba(0, 113, 227, 0.85), rgba(0, 113, 227, 0.22));
+  outline: none;
+  cursor: pointer;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+}
+
+.holo-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ffffff, #ffffff 40%, #0071e3 42%, #0057b8);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow:
+    0 1px 4px rgba(15, 23, 42, 0.35),
+    0 0 0 1px rgba(0, 113, 227, 0.35);
+  cursor: grab;
+}
+
+.holo-slider::-webkit-slider-thumb:active {
+  cursor: grabbing;
+  transform: scale(1.12);
+}
+
+.holo-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ffffff, #ffffff 40%, #0071e3 42%, #0057b8);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.35);
+}
+
+/* ── Soft studio vignette (barely there, keeps edges airy) ───────────────── */
+
+.studio-vignette {
+  background: radial-gradient(ellipse at center, transparent 62%, rgba(100, 116, 139, 0.1) 100%);
+}
+
+/* ── Panel scrollbars ────────────────────────────────────────────────────── */
+
+.af-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.af-scroll::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.04);
+  border-radius: 9999px;
+}
+.af-scroll::-webkit-scrollbar-thumb {
+  background: rgba(15, 23, 42, 0.18);
+  border-radius: 9999px;
+}
+.af-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(15, 23, 42, 0.32);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hover-pill,
+  .holo-chip {
+    animation: none;
+  }
+}
